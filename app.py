@@ -12,6 +12,15 @@ genai.configure(api_key=GEMINI_API_KEY)
 # UPDATED: Using the current Gemini 3 model ID
 model = genai.GenerativeModel('gemini-3-flash-preview')
 
+# --- DEBUG BLOCK ---
+try:
+    for m in genai.list_models():
+        if 'generateContent' in m.supported_generation_methods:
+            st.sidebar.success(f"Key Verified: {m.name}")
+            break
+except Exception as e:
+    st.sidebar.error(f"❌ Key Audit Failed: {e}")
+
 # --- UI STYLING ---
 st.set_page_config(page_title="AI Cricket Strategy Suite", layout="wide")
 st.markdown("""
