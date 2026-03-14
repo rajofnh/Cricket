@@ -4,14 +4,13 @@ import requests
 import google.generativeai as genai
 
 # --- CONFIGURATION ---
-## GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
-## CRICKET_API_KEY = "YOUR_CRICKET_DATA_API_KEY"
-
+# Ensure these keys are set correctly in your Streamlit Cloud "Secrets"
 GEMINI_API_KEY = st.secrets["gemini_api_key"]
 CRICKET_API_KEY = st.secrets["cricket_api_key"]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-3-flash-preview') # Updated model ID
+# UPDATED: Using the current Gemini 3 model ID
+model = genai.GenerativeModel('gemini-3-flash-preview')
 
 # --- UI STYLING ---
 st.set_page_config(page_title="AI Cricket Strategy Suite", layout="wide")
@@ -19,6 +18,7 @@ st.markdown("""
     <style>
     .main { background-color: #0e1117; color: white; }
     .stMetric { background-color: #1e2130; border-radius: 10px; padding: 15px; border: 1px solid #4B5563; }
+    [data-testid="stMetricValue"] { color: #ffffff !important; }
     .audit-box { padding: 20px; border-radius: 10px; margin-top: 20px; }
     .green-flag { background-color: #064e3b; border: 1px solid #10b981; color: #34d399; }
     .red-flag { background-color: #7f1d1d; border: 1px solid #ef4444; color: #f87171; }
@@ -27,11 +27,7 @@ st.markdown("""
 
 # --- DATA AGENT ---
 def get_match_history(team_name):
-    """
-    Mocking data retrieval for demonstration. 
-    In production, use: requests.get(f"https://api.cricapi.com/v1/series?apikey={CRICKET_API_KEY}")
-    """
-    # Simulated last 5 matches: W=Win, L=Loss
+    """Simulated match history for demonstration."""
     data = {
         "India": ["W", "W", "L", "W", "W"],
         "Australia": ["L", "W", "W", "L", "W"],
