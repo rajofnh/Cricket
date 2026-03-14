@@ -11,7 +11,7 @@ GEMINI_API_KEY = st.secrets["gemini_api_key"]
 CRICKET_API_KEY = st.secrets["cricket_api_key"]
 
 genai.configure(api_key=GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-1.5-flash')
+model = genai.GenerativeModel('gemini-3-flash-preview') # Updated model ID
 
 # --- UI STYLING ---
 st.set_page_config(page_title="AI Cricket Strategy Suite", layout="wide")
