@@ -7,8 +7,8 @@ import google.generativeai as genai
 ## GEMINI_API_KEY = "YOUR_GEMINI_API_KEY"
 ## CRICKET_API_KEY = "YOUR_CRICKET_DATA_API_KEY"
 
-GEMINI_API_KEY = st.secrets["api_keys"]["gemini_api_key"]
-CRICKET_API_KEY = st.secrets["api_keys"]["cricket_api_key"]
+GEMINI_API_KEY = st.secrets["gemini_api_key"]
+CRICKET_API_KEY = st.secrets["cricket_api_key"]
 
 genai.configure(api_key=GEMINI_API_KEY)
 model = genai.GenerativeModel('gemini-1.5-flash')
